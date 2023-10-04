@@ -25,7 +25,7 @@ const FormComponent = () => {
               >
                 <div className="col-12 col-lg-4 form-leftside">
                   <h3 className="main-heading fw-bold">
-                    Cheak For <br /> 
+                    Check For <br /> 
                     <span style={{color:"#E43A19", fontSize:"7rem"}}>
                     Anomaly.
                     </span>
