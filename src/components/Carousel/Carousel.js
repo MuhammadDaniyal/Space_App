@@ -14,10 +14,10 @@ const Carousel = () => {
       </div>
           <div className="inner-text">
             <h3 className="carousel-h3">Get ready for the</h3>
-            <strong className="carousel-strong">AI events</strong>
+            <strong className="carousel-strong">Space App</strong>
             <p className="carousel-p">12-14 August 2023 - Karachi</p>
             <NavLink to="/events" className="carousel-btn">
-              View Events
+              Get Started
             </NavLink>
           </div>
       </div>

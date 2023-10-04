@@ -10,7 +10,7 @@
   width: 5rem;
   height: 5rem;
   color: #fff;
-  background: #21113b;
+  background: linear-gradient(to right, #141e30, #243b55);
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border-radius: 50%;

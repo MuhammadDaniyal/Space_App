@@ -16,12 +16,12 @@
 }
 
 .other-nav {
-  background: #0b031b !important;
+  background: #111F4D !important;
 }
 
 .scroll-header {
   position: fixed !important;
-  background: #0b031b !important;
+  background: #111F4D !important;
   top: -70px;
   width: 100%;
   z-index: 999;
@@ -46,7 +46,7 @@
   font-size: 3.5rem !important;
   letter-spacing: 2px;
   font-family: "Pacifico", cursive !important;
-  color: #f50136 !important;
+  color: #E43A19 !important;
 }
 
 /* ----------------------- Navbar Style ---------------------------- */

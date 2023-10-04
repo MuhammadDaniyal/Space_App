@@ -1,7 +1,7 @@
 .countdownbox {
   width: 100px;
   height: 100px;
-  background-color: #f50136;
+  background-color: #eb5435;
   border-radius: 20%;
   display: flex;
   justify-content: center;
@@ -34,9 +34,10 @@
   margin-bottom: 0;
 }
 .myheading {
-  border-left: 6px solid rgb(211, 40, 40);
+  border-left: 6px solid #E43A19;
   padding-left: 15px;
   font-size: 4rem;
+  color: #111F4D;
 }
 
 .eventcard {
@@ -48,24 +49,28 @@
   gap: 5px;
 }
 
-.eventcard:hover {
-  background-color: #f50136;
-  color: #fff !important;
+.eventcard h5{
+  color: #111F4D;
 }
 
-.eventcard:hover h5 {
+/* .eventcard:hover {
+  background-color: #f50136;
+  color: #fff !important;
+} */
+
+/* .eventcard:hover h5 {
   color: #fff;
   transition: all 0.4s ease-in-out;
 }
 .eventcard:hover p {
   color: #fff;
   transition: all 0.4s ease-in-out;
-}
+} */
 
-.eventcard:hover .latest-event-link {
+/* .eventcard:hover .latest-event-link {
   color: #fff;
   transition: all 0.4s ease-in-out;
-}
+} */
 
 .latest-event-card-body {
   display: flex;
