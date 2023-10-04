@@ -33,7 +33,7 @@ const Header = () => {
             ${isVisible ? 'default-header  scroll-header' : 'default-header '}
             `}>
             <NavLink to={'/'}>
-                <h2 className='nav-heading'>Ocean <span>Dev</span></h2>
+                <h2 className='nav-heading'>Space <span>App</span></h2>
             </NavLink>
             <Navbar />
         </header>

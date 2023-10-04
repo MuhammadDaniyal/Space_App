@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <>
       <div className={classes.footer}>
-        <h2 className={classes.footerheading}>Ocean <span>Dev</span></h2>
+        <h2 className={classes.footerheading}>Space <span>App</span></h2>
         <p className={classes.footerpara}>
         Diving into the Future: Ocean Dev presents extraordinary AI events, unlocking the potential of artificial intelligence.
         </p>
@@ -21,7 +21,6 @@ const Footer = () => {
             <span>
               About
             </span>
-            <span>Event</span>
             <span>Contact Us</span>
           </div>
         </div>
@@ -46,7 +45,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={classes.copyright}>
-        <p>NED © 2023, All rights reserved - Powered by OceanDev Corp.</p>
+        <p>NED © 2023, All rights reserved - Powered by SpaceApp Corp.</p>
       </div>
     </>
   )

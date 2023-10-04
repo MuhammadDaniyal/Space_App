@@ -32,7 +32,7 @@
   letter-spacing: 4px;
   font-weight: 500;
   line-height: 1.1;
-  color: #ffffff;
+  color: #e7e7e7;
   text-transform: uppercase;
 }
 .carousel-strong {
@@ -40,13 +40,13 @@
   font-size: 8rem;
   font-weight: 900;
   line-height: 1.1;
-  color: #f50136;
+  color: #F2F4F7;
 }
 
 .carousel-p {
   letter-spacing: 2px;
   font-size: 18px;
-  color: #ffffff;
+  color: #F2F4F7;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
@@ -62,12 +62,12 @@
   outline: 0 !important;
   border: none;
   cursor: pointer;
-  background-color: #f50136;
+  background-color: #E43A19;
 }
 
 .carousel-btn:hover {
   color: #f50136;
-  background-color: #fff;
+  background-color: #F2F4F7;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }

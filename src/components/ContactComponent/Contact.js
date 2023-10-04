@@ -84,22 +84,10 @@ const Contact = () => {
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-12 col-lg-12 ">
-                          <input
-                            type="text"
-                            name="address"
-                            id=""
-                            placeholder="Add Address"
-                            autocomplete="off"
-                            required="true"
-                            className="my_input"
-                          />
-                          <span class="separator"> </span>
-                        </div>
-                      </div>
-                      <div className="row">
                         <div className="col-12 col-lg-12">
-                          <input
+                          <textarea
+                          rows={4}
+                          cols={4}
                             type="text"
                             name="message"
                             id=""
@@ -118,7 +106,7 @@ const Contact = () => {
                           class="form-check-label"
                           className="main-work-para"
                         >
-                          I agree that the Koder's Club may contact me at the
+                          I agree that the Space App may contact me at the
                           email address or phone number above
                         </label>
                       </div>
