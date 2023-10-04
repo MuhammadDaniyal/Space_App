@@ -3,6 +3,7 @@ import "./About.css";
 import Layout from "../../Layout"
 import SideBarAbout from "./SideBarAbout/SideBarAbout";
 import AboutCard from "./AboutCard/AboutCard";
+import Aboutcard from "../../components/MemberCard/MemberCard";
 
 const aboutCardData = [
     {
@@ -50,6 +51,15 @@ const About = () => {
                             </div>
 
                         </div>
+                    </div>
+
+
+                    {/* page 2 */}
+                    <div style={{display:"flex",justifyContent:"space-around",flexWrap:"wrap"}}>
+                    <Aboutcard/>
+                    <Aboutcard/>
+                    <Aboutcard/>
+
                     </div>
                 </div>
             </Layout>
