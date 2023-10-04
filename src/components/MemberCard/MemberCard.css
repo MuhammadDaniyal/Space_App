@@ -12,11 +12,12 @@
     align-items: center;
     margin-top: 3rem;
     margin-bottom: 30px;
+    background-color: #F2F4F7;
 }
 
 .circle {
     background-color: #fff;
-    border: 8px solid #1A2238;
+    border: 8px solid #111F4D;
     /* border-image:  linear-gradient(135deg, #7B33FD, #8332FD, );     */
     height: 150px;
     border-radius: 50%;
@@ -66,7 +67,7 @@
 .team_content h5 {
     font-weight: 500;
     font-size: 1.9rem;
-    color: #1A2238;
+    color: #888;
 }
 
 .team_content p {
