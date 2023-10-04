@@ -16,7 +16,7 @@ const Carousel = () => {
             <h3 className="carousel-h3">Get ready for the</h3>
             <strong className="carousel-strong">Space App</strong>
             <p className="carousel-p">12-14 August 2023 - Karachi</p>
-            <NavLink to="/events" className="carousel-btn">
+            <NavLink to="/form" className="carousel-btn">
               Get Started
             </NavLink>
           </div>

@@ -1,0 +1,143 @@
+.form-section {
+    margin: 20rem 0 8rem 0;
+    text-align: center;
+}
+
+
+.form-leftside {
+    margin-bottom: 3rem;
+}
+
+.form-leftside p {
+    font-size: 1.5rem;
+}
+
+
+.form-leftside img {
+    width: 60%;
+    height: auto;
+}
+
+
+.form-leftside .main-work-para {
+    line-height: 22px;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #888;
+
+}
+
+.my_input {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    padding: 1em 0 12px;
+    padding-left: 0;
+    background: none;
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #999;
+}
+
+.my_input:focus {
+    transform: scaleX(1) translateY(-2px);
+    opacity: 1;
+    border-bottom: none;
+}
+
+
+.my_input:focus+.separator {
+    transform: scaleX(1) translateY(-2px);
+    opacity: 1;
+}
+
+.separator {
+    height: 3px;
+    width: 100%;
+    background: #1A2238;
+    display: block;
+    transform: scaleX(0) translateY(-2px);
+    transform-origin: 50%;
+    opacity: 0;
+    transition: all 0.25s linear;
+}
+
+
+.mainheading {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 3.8rem;
+    margin-bottom: 5rem;
+
+}
+
+.main-heading {
+    font-size: 2.5rem;
+}
+
+
+/* .form-rightside form .form-control {
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    height: 4rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    padding-left: 1rem;
+    font-weight: lighter;
+} */
+
+.form-rightside form .form-check-input {
+    width: 2rem;
+    height: 2rem;
+}
+
+.form-checkbox-style {
+    margin: 4rem 0;
+}
+
+.form-check-input:checked {
+    background-color: #1A2238;
+    border-color: #1A2238;
+}
+
+
+.main-form-heading{
+    border-left: 6px solid #243b55;
+    padding-left: 15px;
+    font-size: 4rem;
+}
+
+.form-rightside form .main-work-para {
+    margin: 0 !important;
+    width: 75%;
+    padding: 0 2rem !important;
+    text-align: start;
+    line-height: 22px;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #888;
+}
+
+.mybtn-form {
+    color: white;
+    background: #111F4D;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 25px;
+    margin-top: 15px;
+    outline: none;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: width 1.4s ease;
+}
+
+.mybtn-form:hover {
+    cursor: pointer;
+    background: linear-gradient(to left, #141e30, #243b55);
+}
