@@ -5,6 +5,7 @@ import { FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
 const Aboutcard = () => {
   return (
     <>
+    <div className=" col-10 col-lg-4 col-md-4 mx-auto d-flex justify-content-center">
       <div class="team_card">
         <div className="circle">
           <img className='team_img rotateY-team-img' src="https://images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/47d488474b1750ad8f9a684f/fggf.jpg" alt="" />
@@ -19,6 +20,7 @@ const Aboutcard = () => {
             <div><FiLinkedin size={23} color='#1A2238' /></div>
           </div>
         </div>
+      </div>
       </div>
     </>
   )
