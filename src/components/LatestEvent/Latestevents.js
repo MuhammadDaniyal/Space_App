@@ -8,7 +8,7 @@ import { FcPositiveDynamic, FcBiohazard, FcAutomotive } from "react-icons/fc";
 const Latestevents = () => {
     return (
         <>
-            <div className='container aligncenter flex-column'>
+            <div className='container aligncenter flex-column' style={{paddingTop:"7rem"}}>
                 <div className="row row-upper w-100">
                     <div className="col">
                         <h1 className='myheading fw-bold'>Latest Events</h1>

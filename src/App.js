@@ -2,7 +2,7 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import About from './Pages/About/About'
-import ContactUs from './Pages/Contact/Contact'
+import ContactUs from './Pages/ContactPage/ContactPage'
 
 const App = () => {
   /** Root Routes */
