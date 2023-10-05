@@ -6,7 +6,6 @@ import './Navbar.css'
 const Header = () => {
 
     const currentLoc = useLocation()
-    console.log(currentLoc);
 
     const [isVisible, setVisible] = useState(false);
 

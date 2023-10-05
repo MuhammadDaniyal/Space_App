@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from "react";
 import Layout from "../../Layout";
-import './FormComponent.css'
+import "./FormComponent.css";
+
+import { DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 const FormComponent = () => {
+  const [dateValue, setDateValue] = useState(null);
+  const handleDateChange = (date) => {
+    setDateValue(date);
+  };
+  console.log(new Date(dateValue).toLocaleString());
   return (
     <Layout>
       <section className="form-section">
@@ -15,24 +25,51 @@ const FormComponent = () => {
               >
                 <div className="col-12 col-lg-4 form-leftside">
                   <h3 className="main-heading fw-bold">
-                    Connect With Our <br /> Team.
+                    Check For <br /> 
+                    <span style={{color:"#E43A19", fontSize:"7rem"}}>
+                    Anomaly.
+                    </span>
                   </h3>
                   <p className="main-work-para">
-                    We provide complete support to your queries.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet.
                   </p>
-                  <figure>
-                    <img
-                      src="./images/contact.png"
-                      alt="contatUsImg"
-                      className="img-fluid"
-                    />
-                  </figure>
                 </div>
                 <div className="col-12 col-lg-6 form-rightside">
                   <form
                     action="https://formspree.io/f/mdovpvnj"
+                    className="d-flex flex-column gap-4"
                     method="POST"
                   >
+                    <div className="row align-items-end">
+                      <div className="col-12 col-lg-6 ">
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DemoItem label={"Date and Time"}>
+                            <DateTimePicker
+                              value={dateValue}
+                              onChange={handleDateChange}
+                              views={[
+                                "year",
+                                "month",
+                                "day",
+                                "hours",
+                                "minutes",
+                                "seconds",
+                              ]}
+                            />
+                          </DemoItem>
+                        </LocalizationProvider>
+                      </div>
+                      <div className="col-12 col-lg-6 ">
+                        <input
+                          type="text"
+                          name="lastName"
+                          id=""
+                          placeholder="Last Name"
+                          className="my_input"
+                        />
+                        <span class="separator"> </span>
+                      </div>
+                    </div>
                     <div className="row">
                       <div className="col-12 col-lg-6 ">
                         <input
@@ -84,20 +121,6 @@ const FormComponent = () => {
                         <span class="separator"> </span>
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col-12 col-lg-12">
-                        <textarea
-                          rows={4}
-                          cols={4}
-                          type="text"
-                          name="message"
-                          id=""
-                          placeholder="Enter your Message"
-                          className="my_input"
-                        />
-                        <span class="separator"> </span>
-                      </div>
-                    </div>
                     <button type="submit" className="mybtn-form">
                       Submit
                     </button>
@@ -109,7 +132,7 @@ const FormComponent = () => {
         </div>
       </section>
     </Layout>
-  )
-}
+  );
+};
 
-export default FormComponent
+export default FormComponent;
