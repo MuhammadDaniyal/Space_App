@@ -3,6 +3,7 @@ import Layout from "../../Layout"
 import Carousel from '../../components/Carousel/Carousel'
 import Latestevents from '../../components/LatestEvent/Latestevents'
 import Contact from '../../components/ContactComponent/Contact'
+import Sponser from '../../components/Sponser/Sponser'
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Carousel />
             <Latestevents />
             <Contact />
+            <Sponser />
         </Layout>
     )
 }
