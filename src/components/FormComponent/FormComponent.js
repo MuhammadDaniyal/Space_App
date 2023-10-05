@@ -14,28 +14,32 @@ const FormComponent = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     date_time: new Date(dateValue).toLocaleString(),
-    Voltage: 0,
-    Current: 0,
-    battery_temp: 0,
-    wheel_rpm: 0,
-    wheel_temp: 0,
+    Voltage: "",
+    Current: "",
+    battery_temp: "",
+    wheel_rpm: "",
+    wheel_temp: "",
   });
   const handleChange = (e) => {
-    setData({ ...data, date_time: new Date(dateValue).toLocaleString(), [e.target.name]: e.target.value });
+    setData({
+      ...data,
+      date_time: new Date(dateValue).toLocaleString(),
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleDate = (date) => {
     setDateValue(date);
-  }
+  };
 
   const resetForm = () => {
     setData({
       date_time: new Date(dateValue).toLocaleString(),
-      Voltage: 0,
-      Current: 0,
-      battery_temp: 0,
-      wheel_rpm: 0,
-      wheel_temp: 0,
+      Voltage: "",
+      Current: "",
+      battery_temp: "",
+      wheel_rpm: "",
+      wheel_temp: "",
     });
   };
 
@@ -44,45 +48,52 @@ const FormComponent = () => {
     console.log(data);
     // setOpen(true)
     try {
-      const response = await fetch('http://127.0.0.1:8000/detect_anomalies/', {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:8000/detect_anomalies/", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-
+      
+      console.log("res", response);
       if (response.ok) {
         resetForm();
-        setOpen(true)
-        setResult(response)
-        console.log('Data sent successfully');
+        setOpen(true);
+        setResult(response);
+        console.log("Data sent successfully");
       } else {
         // Handle errors if the request fails
-        console.error('Failed to send data');
+        console.error("Failed to send data");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
-
-  }
+  };
   return (
     <Layout>
-
-      <div className={`modal fade ${open ? 'show' : ''}`} tabIndex="-1" style={{ display: open ? 'block' : 'none' }} >
-        <div class="modal-dialog" >
+      <div
+        className={`modal fade ${open ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: open ? "block" : "none" }}
+      >
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Anomaly Result</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Anomaly Result
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              ></button>
             </div>
-            <div class="modal-body">
-              {JSON.stringify(result)}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onClick={() => {
-                setOpen(false)
-              }} >Close</button>
-            </div>
+            <div class="modal-body">{JSON.stringify(result)}</div>
           </div>
         </div>
       </div>
@@ -103,7 +114,9 @@ const FormComponent = () => {
                     </span>
                   </h3>
                   <p className="main-work-para">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.Lorem ipsum dolor sit amet.
                   </p>
                 </div>
                 <div className="col-12 col-lg-6 form-rightside">
@@ -216,7 +229,6 @@ const FormComponent = () => {
           </div>
         </div>
       </section>
-
     </Layout>
   );
 };
