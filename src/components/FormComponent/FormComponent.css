@@ -169,3 +169,37 @@
     width: 2rem !important;
     height: 2rem !important;
 }
+
+.modal_h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 30px;
+    padding: 10px 0px;
+}
+
+.modal_title{
+    font-size: 20px;
+    font-weight: 500;
+    color: #888;
+}
+
+.modal_btn{
+    font-size: 16px;
+    padding-right: 20px !important;
+}
+
+.modal_h2_red{
+    color: #cc3300;
+}
+
+.modal_h2_green{
+    color: #339900;
+}
+
+.modal_div{
+    padding: 5px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f05724;
+}

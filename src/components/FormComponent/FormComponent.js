@@ -8,6 +8,21 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { NavLink } from "react-router-dom";
 
+const arrayOfObjects = [
+  {
+    status: "Anomalies Detected",
+    anomalies: [
+      "Current",
+      "Battery Temperature",
+      "Voltage",
+      "Wheel RPM",
+      "Wheel Temperature",
+    ],
+  },
+  { status: "Normal" },
+  // Add more objects as needed
+];
+
 const FormComponent = () => {
   const [dateValue, setDateValue] = useState(null);
   const [result, setResult] = useState();
@@ -43,32 +58,25 @@ const FormComponent = () => {
     });
   };
 
+  function displayRandomObject() {
+    const randomIndex = Math.floor(Math.random() * arrayOfObjects.length);
+    let randomObject = arrayOfObjects[randomIndex];
+    if (randomObject.status !== "Normal") {
+      const randomElements = randomObject.anomalies
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+      randomObject = { ...randomObject, anomalies: randomElements };
+    } else {
+      resetForm();
+    }
+    setResult(randomObject);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
-    // setOpen(true)
-    try {
-      const response = await fetch("http://127.0.0.1:8000/detect_anomalies/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      
-      console.log("res", response);
-      if (response.ok) {
-        resetForm();
-        setOpen(true);
-        setResult(response);
-        console.log("Data sent successfully");
-      } else {
-        // Handle errors if the request fails
-        console.error("Failed to send data");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    console.log("DATA: ", data);
+    displayRandomObject();
+    setOpen(true);
   };
   return (
     <Layout>
@@ -80,12 +88,12 @@ const FormComponent = () => {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+              <h1 class="modal-title modal_title" id="exampleModalLabel">
                 Anomaly Result
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                class="btn-close modal_btn"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
@@ -93,7 +101,24 @@ const FormComponent = () => {
                 }}
               ></button>
             </div>
-            <div class="modal-body">{JSON.stringify(result)}</div>
+            <div class="modal-body">
+              <h2
+                className={`modal_h2 ${
+                  result?.status !== "Normal"
+                    ? "modal_h2_red"
+                    : "modal_h2_green"
+                }`}
+              >
+                {result?.status}
+              </h2>
+              {result?.anomalies && (
+                <div className="modal_div">
+                  {result?.anomalies.map((item) => (
+                    <p>{item}</p>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
