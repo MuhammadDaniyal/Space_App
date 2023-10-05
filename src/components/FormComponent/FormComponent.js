@@ -6,17 +6,89 @@ import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { NavLink } from "react-router-dom";
 
 const FormComponent = () => {
   const [dateValue, setDateValue] = useState(null);
-  const handleDateChange = (date) => {
-    setDateValue(date);
+  const [result, setResult] = useState();
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState({
+    date_time: new Date(dateValue).toLocaleString(),
+    Voltage: 0,
+    Current: 0,
+    battery_temp: 0,
+    wheel_rpm: 0,
+    wheel_temp: 0,
+  });
+  const handleChange = (e) => {
+    setData({ ...data, date_time: new Date(dateValue).toLocaleString(), [e.target.name]: e.target.value });
   };
-  console.log(new Date(dateValue).toLocaleString());
+
+  const handleDate = (date) => {
+    setDateValue(date);
+  }
+
+  const resetForm = () => {
+    setData({
+      date_time: new Date(dateValue).toLocaleString(),
+      Voltage: 0,
+      Current: 0,
+      battery_temp: 0,
+      wheel_rpm: 0,
+      wheel_temp: 0,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(data);
+    // setOpen(true)
+    try {
+      const response = await fetch('http://127.0.0.1:8000/detect_anomalies/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        resetForm();
+        setOpen(true)
+        setResult(response)
+        console.log('Data sent successfully');
+      } else {
+        // Handle errors if the request fails
+        console.error('Failed to send data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+  }
   return (
     <Layout>
+
+      <div className={`modal fade ${open ? 'show' : ''}`} tabIndex="-1" style={{ display: open ? 'block' : 'none' }} >
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Anomaly Result</h1>
+            </div>
+            <div class="modal-body">
+              {JSON.stringify(result)}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" onClick={() => {
+                setOpen(false)
+              }} >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section className="form-section">
-        <div className="container">
+        <div className="container mydiv">
           <div className="row mx-auto">
             <div className="col-12 col-lg-12 mx-auto">
               <div
@@ -25,20 +97,20 @@ const FormComponent = () => {
               >
                 <div className="col-12 col-lg-4 form-leftside">
                   <h3 className="main-heading fw-bold">
-                    Check For <br /> 
-                    <span style={{color:"#E43A19", fontSize:"7rem"}}>
-                    Anomaly.
+                    Check For <br />
+                    <span style={{ color: "#E43A19", fontSize: "7rem" }}>
+                      Anomaly.
                     </span>
                   </h3>
                   <p className="main-work-para">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet.
                   </p>
                 </div>
                 <div className="col-12 col-lg-6 form-rightside">
                   <form
-                    action="https://formspree.io/f/mdovpvnj"
                     className="d-flex flex-column gap-4"
                     method="POST"
+                    onSubmit={handleSubmit}
                   >
                     <div className="row align-items-end">
                       <div className="col-12 col-lg-6 ">
@@ -46,7 +118,7 @@ const FormComponent = () => {
                           <DemoItem label={"Date and Time"}>
                             <DateTimePicker
                               value={dateValue}
-                              onChange={handleDateChange}
+                              onChange={handleDate}
                               views={[
                                 "year",
                                 "month",
@@ -61,10 +133,12 @@ const FormComponent = () => {
                       </div>
                       <div className="col-12 col-lg-6 ">
                         <input
-                          type="text"
-                          name="lastName"
+                          type="number"
+                          name="battery_temp"
                           id=""
-                          placeholder="Last Name"
+                          value={data.battery_temp}
+                          onChange={handleChange}
+                          placeholder="Battery Temperature"
                           className="my_input"
                         />
                         <span class="separator"> </span>
@@ -73,10 +147,12 @@ const FormComponent = () => {
                     <div className="row">
                       <div className="col-12 col-lg-6 ">
                         <input
-                          type="text"
-                          name="firstName"
+                          type="number"
+                          name="Voltage"
                           id=""
-                          placeholder="First Name"
+                          value={data.Voltage}
+                          onChange={handleChange}
+                          placeholder="Voltage"
                           autocomplete="off"
                           required="true"
                           className="my_input"
@@ -85,10 +161,12 @@ const FormComponent = () => {
                       </div>
                       <div className="col-12 col-lg-6 ">
                         <input
-                          type="text"
-                          name="lastName"
+                          type="number"
+                          name="Current"
                           id=""
-                          placeholder="Last Name"
+                          value={data.Current}
+                          onChange={handleChange}
+                          placeholder="Current"
                           className="my_input"
                         />
                         <span class="separator"> </span>
@@ -98,10 +176,12 @@ const FormComponent = () => {
                     <div className="row">
                       <div className="col-12 col-lg-6 ">
                         <input
-                          type="email"
-                          name="email"
+                          type="number"
+                          name="wheel_rpm"
                           id=""
-                          placeholder="Email"
+                          value={data.wheel_rpm}
+                          onChange={handleChange}
+                          placeholder="Wheel RPM"
                           autocomplete="off"
                           required="true"
                           className="my_input"
@@ -110,10 +190,12 @@ const FormComponent = () => {
                       </div>
                       <div className="col-12 col-lg-6 ">
                         <input
-                          type="text"
-                          name="phone"
+                          type="number"
+                          name="wheel_temp"
                           id=""
-                          placeholder="Phone Number"
+                          value={data.wheel_temp}
+                          onChange={handleChange}
+                          placeholder="Wheel Temperature"
                           autocomplete="off"
                           required="true"
                           className="my_input"
@@ -124,6 +206,9 @@ const FormComponent = () => {
                     <button type="submit" className="mybtn-form">
                       Submit
                     </button>
+                    <NavLink to="/previousanalysis" className="mybtn-form">
+                      See Previous Analysis
+                    </NavLink>
                   </form>
                 </div>
               </div>
@@ -131,6 +216,7 @@ const FormComponent = () => {
           </div>
         </div>
       </section>
+
     </Layout>
   );
 };

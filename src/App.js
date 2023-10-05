@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home'
 import About from './Pages/About/About'
 import ContactUs from './Pages/ContactPage/ContactPage'
 import FormComponent from './components/FormComponent/FormComponent'
+import AnalysisReport from './components/AnalysisReport/AnalysisReport'
 
 const App = () => {
   /** Root Routes */
@@ -23,6 +24,10 @@ const App = () => {
     {
       path: '/form',
       element: <FormComponent />
+    },
+    {
+      path: '/previousanalysis',
+      element: <AnalysisReport />
     },
   ])
   return (
